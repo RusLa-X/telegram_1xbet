@@ -8,7 +8,7 @@ TOKEN = "7542087081:AAEAiblB_SSkFKB2rsEUM1MuXDlhW8JW-g4"
 
 # Set links
 WEB_URL = "https://top-betting-world.webflow.io/"  # Website link
-APK_URL = "https://yourdomain.com/app.apk"  # APK link
+APK_URL = "https://affpa.top/L?tag=d_3567009m_70865c_&site=3567009&ad=70865"  # APK link
 VIDEO_TUTORIAL_URL = "https://www.youtube.com/watch?v=88002J2oC_0"  # Video tutorial link
 
 # Configure bot
