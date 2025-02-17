@@ -3,45 +3,45 @@ from aiogram import Bot, Dispatcher, types, Router, F
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import logging
 
-# Встав свій токен тут
+# Insert your token here
 TOKEN = "7542087081:AAEAiblB_SSkFKB2rsEUM1MuXDlhW8JW-g4"
 
-# Вказуємо посилання
-WEB_URL = "https://top-betting-world.webflow.io/"  # Посилання на сайт
-APK_URL = "https://yourdomain.com/app.apk"  # Посилання на APK
-VIDEO_TUTORIAL_URL = "https://www.youtube.com/watch?v=88002J2oC_0"  # Посилання на відео туторіал
+# Set links
+WEB_URL = "https://top-betting-world.webflow.io/"  # Website link
+APK_URL = "https://yourdomain.com/app.apk"  # APK link
+VIDEO_TUTORIAL_URL = "https://www.youtube.com/watch?v=88002J2oC_0"  # Video tutorial link
 
-# Налаштовуємо бота
+# Configure bot
 logging.basicConfig(level=logging.INFO)
 from aiogram.client.default import DefaultBotProperties
 bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode="HTML"))
 dp = Dispatcher()
 router = Router()
 
-# Реєструємо роутер
+# Register router
 router.message.filter(F.text)
 dp.include_router(router)
 
-# Обробник команди /start
+# /start command handler
 @router.message(F.text == "/start")
 async def send_welcome(message: types.Message):
-    print("Обробляємо /start")
+    print("Processing /start")
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="🌍 Перейти на сайт", url=WEB_URL),
-         InlineKeyboardButton(text="📥 Завантажити APK", url=APK_URL),
-         InlineKeyboardButton(text="▶️ Відео туторіал", url=VIDEO_TUTORIAL_URL)]
+        [InlineKeyboardButton(text="🌍 Visit Website", url=WEB_URL)],
+        [InlineKeyboardButton(text="📥 Download APK", url=APK_URL)],
+        [InlineKeyboardButton(text="▶️ Watch Tutorial", url=VIDEO_TUTORIAL_URL)]
     ])
     
     welcome_text = (
-        "<b>Привіт!</b> 👋\n\n"
-        "Цей бот допоможе тобі пройти реєстрацію на букмекерських сайтах!\n\n"
-        "<b>Оберіть одну з опцій нижче:</b>"
+        "<b>Welcome!</b> 👋\n\n"
+        "This bot helps you register on betting platforms!\n\n"
+        "<b>Select an option below:</b>"
     )
     await message.answer(welcome_text, reply_markup=keyboard)
 
-# Функція для запуску бота
+# Function to start the bot
 async def main():
-    print("Бот запущено!")
+    print("Bot started!")
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
